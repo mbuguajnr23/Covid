@@ -64,10 +64,16 @@ if animation_choice == "Cumulative cases":
     st.write("Cumulative COVID-19 Cases per country over time")
     st.write("This graph shows the cumulative number of COVID-19 cases per country over time, as reported by the World Health Organization.")
     st.plotly_chart(fig, use_container_width=True, theme='streamlit')
+    #  cumulative cases per day
+    covid_daily_cases = covid.groupby(['Date_reported'])['Cumulative_cases'].sum().reset_index()
+    fig_daily_cases = px.bar(covid_daily_cases, x='Date_reported', y='Cumulative_cases', title='Cumulative Cases per Day')
+    st.plotly_chart(fig_daily_cases, use_container_width=True, theme='streamlit')
+    st.write("This graph shows the cumulative number of COVID-19 cases reported per day.")
 elif animation_choice == "New cases":
     st.write("New COVID-19 Cases per country over time")
     st.write("This graph shows the number of new COVID-19 cases per country over time, as reported by the World Health Organization.")
     st.plotly_chart(fig_new_cases, use_container_width=True, theme='streamlit')
+
 
 elif animation_choice == "Cumulative deaths":
     st.write("Cumulative COVID-19 Deaths per country over time")
@@ -77,8 +83,21 @@ else:
     st.write("New COVID-19 Deaths per country over time")
     st.write("This graph shows the number of new deaths caused by COVID-19 per country over time, as reported by the World Health Organization.")
     st.plotly_chart(fig_new_deaths, use_container_width=True, theme='streamlit')
+    # cumulative deaths per day
+    covid_daily_deaths = covid.groupby(['Date_reported'])['Cumulative_deaths'].sum().reset_index()
+    fig_daily_deaths = px.bar(covid_daily_deaths, x='Date_reported', y='Cumulative_deaths', title='Cumulative Deaths per Day')
+    st.plotly_chart(fig_daily_deaths, use_container_width=True, theme='streamlit')
+    st.write("This graph shows the cumulative number of deaths caused by COVID-19 reported per day.")
+
 
 ## 4. create bar graphs to show the cumulative cases per day and cumulative daeaths per day 
+
+
+
+
+
+
+
 ## 5. deploy your app to streamlit cloud
 ## 6. submit the link to your streamlit app on dexvirtual
 
