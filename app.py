@@ -56,9 +56,10 @@ fig_new_deaths.update_layout(height=600)
 
 ## 2. Give your graphs titles and if possible add explanative text after each graph
 ## 3. Use widgets in the sidebar to help the user chooose between the four animations: e.g. select box, button, radio 
+st.sidebar.title("WHO COVID Cases")
 # Allow user to choose which animation to view
 animation_options = ["Cumulative cases", "New cases", "Cumulative deaths", "New deaths"]
-animation_choice = st.selectbox("Select animation", animation_options)
+animation_choice = st.sidebar.selectbox("Cases", animation_options)
 
 if animation_choice == "Cumulative cases":
     st.write("Cumulative COVID-19 Cases per country over time")
